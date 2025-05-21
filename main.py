@@ -12,7 +12,7 @@ def translate(word):
     return result.text
 
 def get_random_word(): # функция парсер слова и его описания с сайта
-    print(url)
+    print(f'{url} - рулит!')
     try:
         response = requests.get(url) # получаем ответ
         if response.ok:
@@ -24,18 +24,17 @@ def get_random_word(): # функция парсер слова и его опи
         word_definition = soup.find('div', id="random_word_definition").text # находим описание слова в теге с ид
         print(word_definition)
 
+        return {
+            'english_word': english_word,
+            'word_definition': word_definition
+        }
+
     except Exception as e:
-        print(e)
+        print('Что-то пошло не так, сработало исключение на ошибку:\n', e)
 
-    return {
-            'english_word' : english_word,
-         'word_definition' : word_definition
-             }
-
-get_random_word()
 
 def game():
-    print('Играем!')
+    print('\nИграем!')
     while True:
         word_dict = get_random_word() # парсим слово и описание с сайта и помещаем с словарь
         english_word = word_dict['english_word'] # значение по ключу из словаря 1м способом
@@ -47,12 +46,14 @@ def game():
         if user_say == russian_word:
             print('Ответ правильный!')
         else:
-            print(f'Ответ не правильный! Это слово {russian_word}.')
+            print(f'Ответ не правильный! Это слово {russian_word}, ({english_word}).')
 
-        play_again = input('Попробуете еще раз? y/n')
+        play_again = input('Попробуете еще раз? (y/n): - ')
         if play_again == 'n':
             print('Игра сделана!')
+            break
 
+game()
 
 
 
