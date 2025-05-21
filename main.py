@@ -2,10 +2,9 @@ from googletrans import Translator
 import requests
 from bs4 import BeautifulSoup
 
-
 url = 'https://randomword.com/'
 
-def translate(word):
+def translate(word): # ф-я переводчик с английского на русский
     translator = Translator()
     result = translator.translate(word, dest='ru')
     # text = translator.translate('hello', dest='ja')
@@ -24,13 +23,13 @@ def get_random_word(): # функция парсер слова и его опи
         word_definition = soup.find('div', id="random_word_definition").text # находим описание слова в теге с ид
         print(word_definition)
 
-        return {
+        return { # возвращаем слварь значений
             'english_word': english_word,
             'word_definition': word_definition
         }
 
     except Exception as e:
-        print('Что-то пошло не так, сработало исключение на ошибку:\n', e)
+        print('\nЧто-то пошло не так, сработало исключение на ошибку:\n', e)
 
 
 def game():
@@ -42,8 +41,8 @@ def game():
         russian_word = translate(english_word) # переводим
         russian_word_definition = translate(english_word_definition) # переводим
 
-        user_say = input(f'Посмотрите описание ({russian_word_definition}) и введите слово которое ему соответствует: - ')
-        if user_say == russian_word:
+        user_say = input(f'Посмотрите описание в скобках ({russian_word_definition}) и введите слово которое ему соответствует: - ')
+        if user_say == russian_word.lower():
             print('Ответ правильный!')
         else:
             print(f'Ответ не правильный! Это слово {russian_word}, ({english_word}).')
