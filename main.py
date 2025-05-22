@@ -7,7 +7,7 @@ url = 'https://randomword.com/'
 def translate(word): # ф-я переводчик с английского на русский
     translator = Translator()
     result = translator.translate(word, dest='ru')
-    # text = translator.translate('hello', dest='ja')
+    # text = translator.translate('hello', dest='ja') # перевод с английского на японский
     return result.text
 
 def get_random_word(): # функция парсер слова и его описания с сайта
