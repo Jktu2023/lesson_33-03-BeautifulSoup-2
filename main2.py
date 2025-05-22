@@ -2,7 +2,7 @@ from telebot import TeleBot, types
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message, Chat
 from test import TOKEN
 
-bot = TeleBot(TOKEN)
+bot = TeleBot(TOKEN )
 file_path = 'C:/Users/Anaconda/PycharmProjects/Zerocoder/dist/listbox_contents.txt' # указываем файл с данными и путь)
 bot.state = {}  # словарь нициализации состояния бота
 def load_file(): # загружает значения из файла listbox_contents.txt,
