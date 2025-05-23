@@ -4,7 +4,7 @@ import time
 import threading
 import random
 
-bot = telebot.TeleBot('7713027782:AAGKMkfIN2DstaYaqNTpfrNfUXYbkCY4FX4') # идентификация пином переменной с ботом
+bot = telebot.TeleBot('7713027782:AAGKMkfIN2DstaYaqNTpfrNfUXYbkCY4FX444') # идентификация пином переменной с ботом
 
 list_ = [' ** Человек на 90% состоит из воды. **',
         ' ** В день нужно выпивать 1л воды. **',
