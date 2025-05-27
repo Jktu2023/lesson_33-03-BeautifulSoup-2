@@ -48,7 +48,7 @@ user_ask = input('Вы хотите: '
                  '\nПолучить и пролистать параграфы этой статьи (страници) (1) '
                  '\nПерейти на одну из связанных страниц (2)'
                  '\nВыйти из программы (3)   Итак: - ')
-print()
+# print()
 print(user_ask)
 
 
@@ -108,14 +108,15 @@ elif user_ask == '2':  # Перейти на одну из связанных с
             input()
 
     elif user_ask2 == '2': # Перейти на одну из внутренних статей
-        print(user_ask2)
-        print(' Переходим по внутренним ссылкам')
+        print()
+        print(' Переходим по внутренним ссылкам которых в статье:')
 
         container = browser.find_element(By.ID, "mw-content-text") # Находим контейнер
 
-        # Находим все li внутри контейнера с нужными классами
+        # Находим все li внутри контейнера с нужными классами  "li.toclevel-1"
         li_elements = container.find_elements(By.CSS_SELECTOR,
-                                              'li.toclevel-1.tocsection-1, li.toclevel-1.tocsection-2, li.toclevel-1.tocsection-3')
+                                              'li.toclevel-1') # все
+        print(' Всего',len(li_elements), 'шт')
 
         random_li = random.choice(li_elements) # Выбираем случайный li
 
