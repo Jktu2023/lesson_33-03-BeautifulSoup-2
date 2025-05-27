@@ -130,7 +130,8 @@ elif user_ask == '2':  # Перейти на одну из связанных с
 
 
 elif user_ask == '3': # Выйти из программы
-    print(user_ask)
+    print('Выходим...')
+    exit()
 
 
 
