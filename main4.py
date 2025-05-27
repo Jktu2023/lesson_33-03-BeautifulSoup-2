@@ -29,7 +29,6 @@ assert "Википедия" in browser.title #Проверяем по загол
 
 # Ждем, пока поле поиска станет кликабельным
 wait = WebDriverWait(browser, 10)          # searchInput
-# search_box = browser.find_element(By., 'simpleSearch')
 search_box = wait.until(EC.element_to_be_clickable((By.ID, 'searchInput'))) # Находим окно поиска
 
 user_ask = input('Введите что хотите найти: - ')
@@ -58,13 +57,13 @@ if user_ask == '1': # Получить и пролистать параграф�
     # class ="mw-search-result mw-search-result-ns-0 searchresult-with-quickview"
     hatnotes = []
 
-    for element in browser.find_elements(By.TAG_NAME, 'li'):
-        cls_ = element.get_attribute('class')
-        # print('cls_^',cls_)
+    for element in browser.find_elements(By.TAG_NAME, 'li'): # перебираем все теги "li"
+        cls_ = element.get_attribute('class') # берем атрибут class
+        # если в атрибуте class есть слово "mw-search-result mw-search-result-ns-0 searchresult-with-quickview"
         if cls_ == 'mw-search-result mw-search-result-ns-0 searchresult-with-quickview': # "mw-search-result mw-search-result-ns-0 searchresult-with-quickview"
             print("На этой странице нет параграфов, есть только заголовки, вот они. Нажмите Enter, чтобы продолжить")
-            hatnotes.append(element)
-            word = element.get_attribute('data-prefixedtext')
+            hatnotes.append(element) # добавляем в список
+            word = element.get_attribute('data-prefixedtext') #
             print( word)
             input()
     print('hatnotes',hatnotes)
